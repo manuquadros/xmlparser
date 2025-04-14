@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8"?><OAI-PMH
+	xmlns="http://www.openarchives.org/OAI/2.0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/ http://www.openarchives.org/OAI/2.0/OAI-PMH.xsd"><responseDate>2024-06-14T16:02:40Z</responseDate><request verb="GetRecord" identifier="oai:pubmedcentral.nih.gov:101390" metadataPrefix="pmc">https:/www.ncbi.nlm.nih.gov/pmc/oai/oai.cgi</request><GetRecord><record><header><identifier>oai:pubmedcentral.nih.gov:101390</identifier><datestamp>2002-04-11</datestamp><setSpec>bmcbiot</setSpec><setSpec>pmc-open</setSpec></header><metadata><article xmlns="https://dtd.nlm.nih.gov/ns/archiving/2.3/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mml="http://www.w3.org/1998/Math/MathML" xmlns:xlink="http://www.w3.org/1999/xlink" xsi:schemaLocation="https://dtd.nlm.nih.gov/ns/archiving/2.3/ https://dtd.nlm.nih.gov/archiving/2.3/xsd/archivearticle.xsd" article-type="research-article">
+  <front>
+    <journal-meta>
+      <journal-id journal-id-type="nlm-ta">BMC Biotechnol</journal-id>
+      <journal-title>BMC Biotechnology</journal-title>
+      <issn pub-type="epub">1472-6750</issn>
+      <publisher>
+        <publisher-name>BioMed Central</publisher-name>
+        <publisher-loc>London</publisher-loc>
+      </publisher>
+    </journal-meta>
+    <article-meta>
+      <article-id pub-id-type="accession">PMC101390</article-id>
+      <article-id pub-id-type="pmcid">PMC101390</article-id>
+      <article-id pub-id-type="pmc-uid">101390</article-id>
+      <article-id pub-id-type="pmid">11914155</article-id>
+      <article-id pub-id-type="publisher-id">1472-6750-2-3</article-id>
+      <article-id pub-id-type="pmid">11914155</article-id>
+      <article-id pub-id-type="doi">10.1186/1472-6750-2-3</article-id>
+      <article-categories>
+        <subj-group subj-group-type="heading">
+          <subject>Research Article</subject>
+        </subj-group>
+      </article-categories>
+      <title-group>
+        <article-title><italic>Rhodococcus erythropolis</italic> ATCC 25544 as a suitable source of cholesterol oxidase: cell-linked and extracellular enzyme synthesis, purification and concentration</article-title>
+      </title-group>
+      <contrib-group>
+        <contrib id="A1" contrib-type="author">
+          <name>
+            <surname>Sojo</surname>
+            <given-names>Mar M</given-names>
+          </name>
+          <xref ref-type="aff" rid="I1">1</xref>
+          <email>msojo@um.es</email>
+        </contrib>
+        <contrib id="A2" corresp="yes" contrib-type="author">
+          <name>
+            <surname>Bru</surname>
+            <given-names>Roque R</given-names>
+          </name>
+          <xref ref-type="aff" rid="I2">2</xref>
+          <email>Roque.Bru@ua.es</email>
+        </contrib>
+        <contrib id="A3" contrib-type="author">
+          <name>
+            <surname>García-Carmona</surname>
+            <given-names>Francisco F</given-names>
+          </name>
+          <xref ref-type="aff" rid="I1">1</xref>
+          <email>gcarmona@um.es</email>
+        </contrib>
+      </contrib-group>
+      <aff id="I1"><label>1</label>Departamento de Bioquímica y Biología Molecular-A, Facultad de Biología, Universidad de Murcia, E-30100 Murcia, Spain</aff>
+      <aff id="I2"><label>2</label>Departamento de Agroquímica y Bioquímica, Facultad de Ciencias, Universidad de Alicante, E-0 3 080 Alicante, Spain</aff>
+      <pub-date pub-type="collection">
+        <year>2002</year>
+      </pub-date>
+      <pub-date pub-type="epub">
+        <day>26</day>
+        <month>3</month>
+        <year>2002</year>
+      </pub-date>
+      <volume>2</volume>
+      <fpage>3</fpage>
+      <lpage>3</lpage>
+      <ext-link ext-link-type="uri" xlink:href="http://www.biomedcentral.com/1472-6750/2/3"/>
+      <history>
+        <date date-type="received">
+          <day>17</day>
+          <month>1</month>
+          <year>2002</year>
+        </date>
+        <date date-type="accepted">
+          <day>26</day>
+          <month>3</month>
+          <year>2002</year>
+        </date>
+      </history>
+      <permissions>
+        <copyright-statement>Copyright © 2002 Sojo et al; licensee BioMed Central Ltd. This is an Open Access article: verbatim copying and redistribution of this article are permitted in all media for any purpose, provided this notice is preserved along with the article's original URL.</copyright-statement>
+        <copyright-year>2002</copyright-year>
+        <copyright-holder>Sojo et al; licensee BioMed Central Ltd. This is an Open Access article: verbatim copying and redistribution of this article are permitted in all media for any purpose, provided this notice is preserved along with the article's original URL.</copyright-holder>
+      </permissions>
+      <abstract>
+        <sec>
+          <title>Background</title>
+          <p>The suitability of the strain <italic>Rhodococcus erythropolis</italic> ATCC 25544 grown in a two-liter fermentor as a source of cholesterol oxidase has been investigated. The strain produces both cell-linked and extracellular cholesterol oxidase in a high amount, that can be extracted, purified and concentrated by using the detergent Triton X-114.</p>
+        </sec>
+        <sec>
+          <title>Results</title>
+          <p>A spray-dry method of preparation of the enzyme inducer cholesterol in Tween 20 was found to be superior in both convenience and enzyme synthesis yield to one of heat-mixing. Both were similar as far as biomass yield is concerned. Cell-linked cholesterol oxidase was extracted with Triton X-114, and this detergent was also used for purification and concentration, following temperature-induced detergent phase separation. Triton X-114 was utilized to purify and to concentrate the cell-linked and the extracellular enzyme. Cholesterol oxidase was found mainly in the resulting detergent-rich phase. When Triton X-114 concentration was set to 6% w/v the extracellular, but not the cell-extracted enzyme, underwent a 3.4-fold activation after the phase separation process. This result is interpreted in the light of interconvertible forms of the enzyme that do not seem to be in equilibrium. Fermentation yielded 360 U/ml (672 U/ml after activation), 36% of which was extracellular (65% after activation). The Triton X-114 phase separation step yielded 11.6-fold purification and 20.3-fold concentration.</p>
+        </sec>
+        <sec>
+          <title>Conclusions</title>
+          <p>The results of this work may make attractive and cost-effective the implementation of this bacterial strain and this detergent in a purification-based industrial production scheme of commercial cholesterol oxidase.</p>
+        </sec>
+      </abstract>
+      <kwd-group>
+        <kwd>Cholesterol oxidase</kwd>
+        <kwd>
+          <italic>Rhodococcus erythropolis ATCC 25544</italic>
+        </kwd>
+        <kwd>enzyme purification</kwd>
+        <kwd>Triton X-114</kwd>
+        <kwd>phase separation</kwd>
+      </kwd-group>
+    </article-meta>
+  </front>
+  <body>
+    <sec>
+      <title>Background</title>
+      <p>Microbial cholesterol oxidases (EC 1.1.3.6) (COX) catalyze the oxidation and isomerization of cholesterol to 4-cholesten-3-one. Interest in these enzymes mostly relies in their utility in the determination of cholesterol in biological samples such as serum and foods [<xref ref-type="bibr" rid="B1">1</xref>], and also in the bioconversion of a number of 3β-hydroxysteroids in organic solvents [<xref ref-type="bibr" rid="B2">2</xref>] and in reverse micelles [<xref ref-type="bibr" rid="B3">3</xref>] (for a recent review see [<xref ref-type="bibr" rid="B5">5</xref>]). Since earliest reports on crude preparations from <italic>Mycobacterium sp.</italic>[<xref ref-type="bibr" rid="B4">4</xref>], cholesterol oxidases have been described in a number of bacteria and fungi [<xref ref-type="bibr" rid="B5">5</xref>]. Enzymatic properties of cholesterol oxidase from <italic>Rhodococcus</italic> strains (some of which named formerly as <italic>Nocardid</italic>) are particularly suitable for use in the analytical determination of cholesterol, in which the hydrogen peroxide formed is used in a chromogenic reaction catalyzed by horseradish peroxidase [<xref ref-type="bibr" rid="B6">6</xref>].</p>
+      <p>The <italic>Rhodococcus</italic> enzyme has been usually reported to be membrane bound, extractable from whole cells by treatment with detergents or trypsin, although no phospholipids are detected in the enzyme extracts [<xref ref-type="bibr" rid="B7">7</xref>]. More recent reports have demonstrated the production of both extracellular and cell-bound cholesterol oxidase by strains of this genus such as <italic>Rhodococcus</italic> sp. GK1 [<xref ref-type="bibr" rid="B8">8</xref>], <italic>R. erythropolis</italic> ATCC 25544 [<xref ref-type="bibr" rid="B9">9</xref>] and the pathogenic specie <italic>R. equi</italic>[<xref ref-type="bibr" rid="B10">10</xref>,<xref ref-type="bibr" rid="B11">11</xref>].</p>
+      <p>The kinetics of enzyme synthesis at both bench and large scale by <italic>Nocardia rhodochrous</italic> (renamed as <italic>Rhodococcus rhodochrous</italic>), a strain that produces only a cell-bound COX, has been studied and the growing conditions for bacterial enzyme synthesis in fermentor were defined [<xref ref-type="bibr" rid="B12">12</xref>].</p>
+      <p>Due to the high cell-bound to extracellular ratio of cholesterol oxidase produced by <italic>Rhodococcus,</italic> even in those strains that also produce extracellular enzyme, the use of detergents is compulsory in the cost-effective extraction of this enzyme. The properties of protein extraction and purification combine in polyoxyethylene type detergents whose cloud point is in the biocompatible range [<xref ref-type="bibr" rid="B13">13</xref>]. For instance, Triton X-114 is as effective as Triton X-100 to extract membrane proteins, but its cloud point in semidiluted solutions (temperature at which the detergent solubility decreases sharply and a liquid-liquid phase separation is produced) is 23°C as compared to 65°C of Triton X-100. Therefore, extracted proteins partition between a detergent-rich phase and a detergent-depleted phase thus occurring protein purification. Protein purification has been accomplished successfully from either animal cells and organelles, plant tissues and microbial cells [<xref ref-type="bibr" rid="B13">13</xref>-<xref ref-type="bibr" rid="B15">15</xref>]. Triton X-114 at 1%w/v in buffers has been utilized to study the partitioning behavior of commercial cholesterol oxidase from several bacterial sources, resulting in partitioning toward the detergent rich-phase in all cases [<xref ref-type="bibr" rid="B16">16</xref>]. The polyoxyethylene detergent C12EO5 added the to a non-clarified culture of <italic>Nocardia rhodochrous</italic> was used for direct solubilization and extraction of the cell-bound cholesterol oxidase followed by phase separation [<xref ref-type="bibr" rid="B17">17</xref>]. A four-fold preconcentration and five-fold purification were achieved in optimal conditions. Due to the high cost of C12E05 these authors tried the cheaper four narrow range ethylene oxide surfactant C12-C18E05 [<xref ref-type="bibr" rid="B18">18</xref>] which was found equally suitable for direct solubilization and extraction of cell-bound cholesterol oxidase, thus this system was expanded to pilot scale [<xref ref-type="bibr" rid="B19">19</xref>].</p>
+      <p>In a previous work [<xref ref-type="bibr" rid="B9">9</xref>] we described the cell-bound and extracellular cholesterol oxidase activities from <italic>R. erythropolis</italic> ATCC 25544, achieving in optimal conditions 55% cell-bound and 45% extracellular activity. Their enzymatic properties strongly supported the idea that the particulate and the extracellular cholesterol oxidases are two different forms of the same enzyme with an estimated molecular mass of 55 kDa. In this work we optimize the culture conditions in a 2-liter fermentor of this extracellular cholesterol oxidase producer strain and carry out the extraction, partial purification and concentration of both types of cholesterol oxidase by using Triton X-114 phase separation. The results obtained are very promising for the use of this strain and this technique in the industrial processing of bacteria to obtain cholesterol oxidase.</p>
+    </sec>
+    <sec>
+      <title>Results and discussion</title>
+      <sec>
+        <title>Batch cultivation of <italic>R. erythropolis</italic> (ATCC 25544)</title>
+        <p>The bacteria were grown on the GYS medium in a 2-liter scale fermentor in batch mode operation under pH and temperature controlled conditions. Under this conditions the cell yield was doubled (9.5 mg/ml vs. 4.8 mg/ml dry cell weight) and the cultivation time was reduced to one third (60 vs. 180 hours) as compared with shaken flasks. These results are in good agreement with the literature [<xref ref-type="bibr" rid="B12">12</xref>]. We found that addition of 2 g/l cholesterol to the culture broth [<xref ref-type="bibr" rid="B12">12</xref>], prepared as an aqueous emulsion with the aid of Tween 80 at a weight ratio 2:1 results in a high yield of COX production [<xref ref-type="bibr" rid="B9">9</xref>], but the preparation procedure of that emulsion had a marked influence in the final enzyme yield, although not on the cell weight, as seen in Table <xref ref-type="table" rid="T1">1</xref>. The spray-dry method resulted advantageous because the cholesterol :Tween 80 emulsion formed readily and COX production increased in overall by three times with respect to the preparation of the cholesterol:Tween 80 mixture at the flame. Enzyme production improvement resulted larger as cell-linked (3.8-fold) than as extracellular (2.3-fold). This overall increase of COX production can be due to a better availability of cholesterol to the cell since particle size obtained by spray-dry is smaller.</p>
+      </sec>
+    </sec>
+  </body>
+  <back>
+    <ack>
+      <sec>
+        <title>Acknowledgements</title>
+        <p>M.S. is a predoctoral fellow from the Spanish Ministry of Education (plan F.P.I.). This work was supported by grants BIO394-0451 and AGF99-0396 from C.I.C.Y.T. and PIB-95/03 from Comunidad Autónoma de Murcia.</p>
+      </sec>
+    </ack>
+    <ref-list>
+      <ref id="B1">
+        <citation citation-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Allain</surname>
+              <given-names>CC</given-names>
+            </name>
+            <name>
+              <surname>Poon</surname>
+              <given-names>LS</given-names>
+            </name>
+            <name>
+              <surname>Chan</surname>
+              <given-names>CSG</given-names>
+            </name>
+            <name>
+              <surname>Richmond</surname>
+              <given-names>W</given-names>
+            </name>
+            <name>
+              <surname>Fu</surname>
+              <given-names>PC</given-names>
+            </name>
+          </person-group>
+          <article-title>Enzymatic determination of total serum cholesterol.</article-title>
+          <source>Clin Chem</source>
+          <year>1974</year>
+          <volume>20</volume>
+          <fpage>470</fpage>
+          <lpage>475</lpage>
+          <pub-id pub-id-type="pmid">4818200</pub-id>
+        </citation>
+      </ref>
+      <ref id="B2">
+        <citation citation-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Kazandjian</surname>
+              <given-names>RZ</given-names>
+            </name>
+            <name>
+              <surname>Dordich</surname>
+              <given-names>JS</given-names>
+            </name>
+            <name>
+              <surname>Kilbanov</surname>
+              <given-names>AM</given-names>
+            </name>
+          </person-group>
+          <article-title>Enzymatic analysis in organic solvents.</article-title>
+          <source>Biotechnol Bioeng</source>
+          <year>1986</year>
+          <volume>28</volume>
+          <fpage>417</fpage>
+          <lpage>421</lpage>
+        </citation>
+      </ref>
+    </ref-list>
+  </back>
+</article>
+
+</metadata></record></GetRecord></OAI-PMH>
