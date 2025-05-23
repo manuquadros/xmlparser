@@ -1,5 +1,6 @@
 """Module providing tools for the manipulation of XML articles."""
 
+import importlib
 import itertools
 import os
 import pathlib
@@ -28,7 +29,7 @@ from lxml.etree import (
 )
 from nltk import RegexpTokenizer
 
-XSLDIR = pathlib.Path(__file__).parent.parent.parent / "stylesheets"
+XSLDIR = importlib.resources.files("xmlparser.stylesheets")
 
 xml_char_tokenizer = RegexpTokenizer(r"<[\w/][^<>]*/?>|.")
 open_tag = r"<\w[^<>]*>"
@@ -231,7 +232,7 @@ def transform_tree(
     return xslt_transform(tree)
 
 
-def transform_article(article_xml: str | bytes) -> str:
+def transform_article(article_xml: str | bytes, style: str = "jats") -> str:
     if isinstance(article_xml, str):
         article_xml = article_xml.encode()
 
@@ -244,7 +245,7 @@ def transform_article(article_xml: str | bytes) -> str:
         raise
     finally:
         return tostring(
-            clean_namespaces(transform_tree(tree)),
+            transform_tree(tree, style=style),
             pretty_print=True,
             encoding="unicode",
         )
