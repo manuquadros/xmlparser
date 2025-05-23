@@ -9,5 +9,6 @@ from .xmlparser import (
     reinsert_tags,
     remove_tags,
     transform_article,
+    transform_tree,
     tree_as_string,
 )

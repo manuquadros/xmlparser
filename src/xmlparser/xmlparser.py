@@ -2,6 +2,7 @@
 
 import itertools
 import os
+import pathlib
 import re
 from collections.abc import Iterator, Sequence
 from copy import deepcopy
@@ -26,6 +27,8 @@ from lxml.etree import (
     tostring,
 )
 from nltk import RegexpTokenizer
+
+XSLDIR = pathlib.Path(__file__).parent.parent.parent / "stylesheets"
 
 xml_char_tokenizer = RegexpTokenizer(r"<[\w/][^<>]*/?>|.")
 open_tag = r"<\w[^<>]*>"
@@ -216,10 +219,14 @@ def get_chunks(
         yield build_chunk(content=content, pos=next(pos))
 
 
-def transform_tree(tree: _ElementTree | _Element) -> _Element | _ElementTree:
-    xslt_transform = XSLT(
-        parse(os.path.join(os.path.dirname(__file__), "pubmed.xsl"))
-    )
+def transform_tree(
+    tree: _ElementTree | _Element | str, style: str = "jats"
+) -> _Element | _ElementTree:
+    if isinstance(tree, str):
+        tree = fromstring(tree)
+    stylesheet = {"jats": "jats.xsl"}[style]
+    path = XSLDIR / stylesheet
+    xslt_transform = XSLT(parse(path))
 
     return xslt_transform(tree)
 
