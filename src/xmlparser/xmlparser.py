@@ -244,11 +244,7 @@ def transform_article(article_xml: str | bytes, style: str = "jats") -> str:
         e.add_note(article_xml)
         raise
     finally:
-        return tostring(
-            transform_tree(tree, style=style),
-            pretty_print=True,
-            encoding="unicode",
-        )
+        return tostring(transform_tree(tree, style=style))
 
 
 def close_tags(xml: str | bytes) -> bytes:
