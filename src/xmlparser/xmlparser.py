@@ -243,7 +243,7 @@ def transform_article(article_xml: str | bytes, style: str = "jats") -> str:
     except XMLSyntaxError as e:
         e.add_note(str(article_xml))
         raise
-    finally:
+    else:
         return tostring(transform_tree(tree, style=style))
 
 
