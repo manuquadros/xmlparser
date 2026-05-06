@@ -137,7 +137,7 @@ def get_segments(tree: _ElementTree) -> list[_Element]:
 
     non_metadata = "//*[@class = 'article-body']/"
     headers = "contains('h2h3h4h5h6', name())"
-    pars = "name()='p' or name()='table-wrap' or name()='fig'"
+    pars = "name()='p' or name()='figure'"
     segtags = f"*[{headers} or {pars}]"
     body = non_metadata + segtags
 
