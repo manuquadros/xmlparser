@@ -330,7 +330,7 @@ def transform_article(article_xml: str | bytes, style: str = "jats") -> str:
         e.add_note(str(article_xml))
         raise
     else:
-        return tostring(transform_tree(tree, style=style))
+        return tostring(transform_tree(tree, style=style)).decode("utf-8")
 
 
 def close_tags(xml: str | bytes) -> bytes:

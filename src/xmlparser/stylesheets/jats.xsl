@@ -28,7 +28,7 @@
     </section>
   </xsl:template>
 
-  <!-- title inside sec → depth-based heading (h2–h6) -->
+  <!-- title inside sec → depth-based heading (h2–h6); prepend sibling label if present -->
   <xsl:template match="*[local-name()='sec']/*[local-name()='title']">
     <xsl:variable name="depth" select="count(ancestor::*[local-name()='sec'])"/>
     <xsl:variable name="level">
@@ -41,16 +41,26 @@
       </xsl:choose>
     </xsl:variable>
     <xsl:element name="{$level}">
+      <xsl:if test="preceding-sibling::*[local-name()='label']">
+        <xsl:value-of select="preceding-sibling::*[local-name()='label']"/>
+        <xsl:text> </xsl:text>
+      </xsl:if>
       <xsl:apply-templates/>
     </xsl:element>
   </xsl:template>
 
-  <!-- abstract → section.abstract -->
+  <!-- label inside sec is rendered via the title template above; suppress standalone -->
+  <xsl:template match="*[local-name()='sec']/*[local-name()='label']"/>
+
+  <!-- abstract → section.abstract; drop redundant <title> direct child -->
   <xsl:template match="*[local-name()='abstract']">
     <section class="abstract">
       <xsl:apply-templates/>
     </section>
   </xsl:template>
+
+  <!-- abstract title (e.g. "Abstract") is redundant in context; suppress -->
+  <xsl:template match="*[local-name()='abstract']/*[local-name()='title']"/>
 
   <!-- fig → figure: graphic/media first, then label + caption below -->
   <xsl:template match="*[local-name()='fig']">
