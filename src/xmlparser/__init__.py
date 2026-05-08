@@ -1,4 +1,6 @@
 from .xmlparser import (
+    JatsFrontMeta,
+    ParsedArticle,
     XMLSyntaxError,
     clean_namespaces,
     concat,
@@ -6,6 +8,8 @@ from .xmlparser import (
     get_metadata,
     get_pmid,
     get_segments,
+    parse_jats_article,
+    parse_jats_front,
     reinsert_tags,
     remove_tags,
     replace_annotation,

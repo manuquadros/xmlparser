@@ -50,6 +50,26 @@ class TextDescription:
 
 
 @dataclass
+class JatsFrontMeta:
+    title: str = "Untitled"
+    authors: str = ""
+    journal: str = ""
+    volume: str = ""
+    number: str | None = None
+    pages: str = ""
+    year: int = 0
+
+
+@dataclass
+class ParsedArticle:
+    """Parsed content of a scientific article, source-format agnostic."""
+
+    meta: JatsFrontMeta | None
+    abstract: str | None
+    body: str | None
+
+
+@dataclass
 class TextChunk:
     """Data class for chunks of text from research articles."""
 
@@ -75,17 +95,21 @@ def parse_file(file: str) -> _ElementTree:
         raise
 
 
+for _ns, _uri in {
+    "ns": "https://dtd.nlm.nih.gov/ns/archiving/2.3/",
+    "jats11": "https://jats.nlm.nih.gov/ns/archiving/1.1/",
+    "jats12": "https://jats.nlm.nih.gov/ns/archiving/1.2/",
+    "jats13": "https://jats.nlm.nih.gov/ns/archiving/1.3/",
+    "jats": "https://jats.nlm.nih.gov/ns/archiving/1.4/",
+    "ali": "http://www.niso.org/schemas/ali/1.0/",
+    "xsi": "http://www.w3.org/2001/XMLSchema-instance",
+    "mml": "http://www.w3.org/1998/Math/MathML",
+    "xlink": "http://www.w3.org/1999/xlink",
+}.items():
+    register_namespace(_ns, _uri)
+
+
 def tree_as_string(tree: _ElementTree | _Element) -> str:
-    namespaces = {
-        "ns": "https://dtd.nlm.nih.gov/ns/archiving/2.3/",
-        "xsi": "http://www.w3.org/2001/XMLSchema-instance",
-        "mml": "http://www.w3.org/1998/Math/MathML",
-        "xlink": "http://www.w3.org/1999/xlink",
-    }
-
-    for key, value in namespaces.items():
-        register_namespace(key, value)
-
     return tostring(tree, method="c14n2").decode("utf-8")
 
 
@@ -151,6 +175,68 @@ def get_metadata(tree: _ElementTree) -> str:
     metadata = pathfinder("//*[name()='journal-meta' or name()='article-meta']")
     return "\n".join(
         tostring(block, encoding="unicode").strip() for block in metadata
+    )
+
+
+def _front_text(elem: _Element, xpath: str) -> str:
+    results = elem.xpath(xpath)
+    return results[0].strip() if results else ""
+
+
+def parse_jats_front(front: _Element) -> JatsFrontMeta:
+    title = _front_text(front, ".//*[name()='article-title']//text()")
+
+    surnames = front.xpath(
+        ".//*[name()='contrib' and @contrib-type='author']//*[name()='surname']/text()"
+    )
+    given_names = front.xpath(
+        ".//*[name()='contrib' and @contrib-type='author']"
+        "//*[name()='given-names']/text()"
+    )
+    initials = [g.split() for g in given_names]
+    authors = ", ".join(
+        f"{s} {i[0]}" if i else s
+        for s, i in itertools.zip_longest(surnames, initials, fillvalue=[])
+    )
+
+    journal = _front_text(front, ".//*[name()='journal-title']/text()")
+    volume = _front_text(front, ".//*[name()='volume']/text()")
+    number = _front_text(front, ".//*[name()='issue']/text()") or None
+
+    fpage = _front_text(front, ".//*[name()='fpage']/text()")
+    lpage = _front_text(front, ".//*[name()='lpage']/text()")
+    pages = f"{fpage}–{lpage}" if fpage and lpage else fpage
+
+    year_str = _front_text(
+        front,
+        ".//*[name()='pub-date' and ("
+        "@pub-type='ppub' or @pub-type='epub' or @date-type='pub'"
+        ")]/*[name()='year']/text()",
+    )
+    if not year_str:
+        year_str = _front_text(front, ".//*[name()='pub-date']/*[name()='year']/text()")
+    year = int(year_str) if year_str.isdigit() else 0
+
+    return JatsFrontMeta(
+        title=title,
+        authors=authors,
+        journal=journal,
+        volume=volume,
+        number=number,
+        pages=pages,
+        year=year,
+    )
+
+
+def parse_jats_article(record: _Element) -> ParsedArticle:
+    fronts = record.xpath("//*[name()='front'][1]")
+    abstract_els = record.xpath("//*[name()='abstract'][1]")
+    body_els = record.xpath("//*[name()='body'][1]")
+
+    return ParsedArticle(
+        meta=parse_jats_front(fronts[0]) if fronts else None,
+        abstract=tree_as_string(abstract_els[0]) if abstract_els else None,
+        body=tree_as_string(body_els[0]) if body_els else None,
     )
 
 
