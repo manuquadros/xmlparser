@@ -1,6 +1,5 @@
 """Module providing tools for the manipulation of XML articles."""
 
-import importlib
 import itertools
 import os
 import pathlib
@@ -8,6 +7,7 @@ import re
 from collections.abc import Iterator, Sequence
 from copy import deepcopy
 from dataclasses import dataclass
+from importlib import resources
 from typing import NamedTuple, TypeGuard
 
 from lxml.etree import (
@@ -29,7 +29,7 @@ from lxml.etree import (
 )
 from nltk import RegexpTokenizer
 
-XSLDIR = importlib.resources.files("xmlparser.stylesheets")
+XSLDIR = resources.files("xmlparser.stylesheets")
 
 xml_char_tokenizer = RegexpTokenizer(r"<[\w/][^<>]*/?>|.")
 open_tag = r"<\w[^<>]*>"
@@ -173,9 +173,7 @@ def get_segments(tree: _ElementTree) -> list[_Element]:
 def get_metadata(tree: _ElementTree) -> str:
     pathfinder = XPathEvaluator(tree)
     metadata = pathfinder("//*[name()='journal-meta' or name()='article-meta']")
-    return "\n".join(
-        tostring(block, encoding="unicode").strip() for block in metadata
-    )
+    return "\n".join(tostring(block, encoding="unicode").strip() for block in metadata)
 
 
 def _front_text(elem: _Element, xpath: str) -> str:
@@ -243,8 +241,7 @@ def parse_jats_article(record: _Element) -> ParsedArticle:
 def clean_namespaces(elem: _Element | _ElementTree) -> _Element | _ElementTree:
     for subelem in elem.getiterator():
         if not (
-            isinstance(subelem, _Comment)
-            or isinstance(subelem, _ProcessingInstruction)
+            isinstance(subelem, _Comment) or isinstance(subelem, _ProcessingInstruction)
         ):
             try:
                 subelem.tag = QName(subelem).localname
@@ -371,16 +368,12 @@ def reinsert_tags(text: str, xml: _Element | _ElementTree | str) -> str:
             root = True if elem == xml.getroot() else False
             if event == "start" and elem.text is not None:
                 segment = "".join(itertools.islice(textit, len(elem.text)))
-                elem, open_spans = annotate_text(
-                    elem, segment, open_spans, "text"
-                )
+                elem, open_spans = annotate_text(elem, segment, open_spans, "text")
                 if root:
                     xml._setroot(elem)
             elif event == "end" and elem.tail is not None:
                 segment = "".join(itertools.islice(textit, len(elem.tail)))
-                elem, open_spans = annotate_text(
-                    elem, segment, open_spans, "tail"
-                )
+                elem, open_spans = annotate_text(elem, segment, open_spans, "tail")
 
     xml = merge_children(promote_spans(xml))
 
@@ -483,10 +476,7 @@ def promote_spans(tree: _ElementTree) -> _Element | _ElementTree:
 def promote_span(span: _Element) -> None:
     parent = span.getparent()
     while (
-        parent is not None
-        and len(parent) == 1
-        and not parent.text
-        and not parent.tail
+        parent is not None and len(parent) == 1 and not parent.text and not parent.tail
     ):
         newspan = deepcopy(span)
         parent.remove(span)
