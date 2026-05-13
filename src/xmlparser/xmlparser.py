@@ -191,10 +191,9 @@ def parse_jats_front(front: _Element) -> JatsFrontMeta:
         ".//*[name()='contrib' and @contrib-type='author']"
         "//*[name()='given-names']/text()"
     )
-    initials = [g.split() for g in given_names]
-    authors = ", ".join(
-        f"{s} {i[0]}" if i else s
-        for s, i in itertools.zip_longest(surnames, initials, fillvalue=[])
+    authors = "; ".join(
+        f"{s}, {g}" if g else s
+        for s, g in itertools.zip_longest(surnames, given_names, fillvalue="")
     )
 
     journal = _front_text(front, ".//*[name()='journal-title']/text()")
