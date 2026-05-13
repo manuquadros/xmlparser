@@ -178,7 +178,7 @@ def get_metadata(tree: _ElementTree) -> str:
 
 def _front_text(elem: _Element, xpath: str) -> str:
     results = elem.xpath(xpath)
-    return results[0].strip() if results else ""
+    return "".join(results).strip() if results else ""
 
 
 def parse_jats_front(front: _Element) -> JatsFrontMeta:
