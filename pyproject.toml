@@ -13,3 +13,8 @@ build-backend = "pdm.backend"
 
 [tool.pytest.ini_options]
 addopts = ["--import-mode=importlib"]
+
+[dependency-groups]
+dev = [
+    "pytest>=9.0.3",
+]
