@@ -1,5 +1,5 @@
 from .xmlparser import (
-    JatsFrontMeta,
+    ArticleMeta,
     ParsedArticle,
     XMLSyntaxError,
     clean_namespaces,
@@ -10,6 +10,7 @@ from .xmlparser import (
     get_segments,
     parse_jats_article,
     parse_jats_front,
+    parse_pubmed_article,
     reinsert_tags,
     remove_tags,
     replace_annotation,
@@ -17,3 +18,24 @@ from .xmlparser import (
     transform_tree,
     tree_as_string,
 )
+
+__all__ = [
+    "ArticleMeta",
+    "ParsedArticle",
+    "XMLSyntaxError",
+    "clean_namespaces",
+    "concat",
+    "get_doi",
+    "get_metadata",
+    "get_pmid",
+    "get_segments",
+    "parse_jats_article",
+    "parse_jats_front",
+    "parse_pubmed_article",
+    "reinsert_tags",
+    "remove_tags",
+    "replace_annotation",
+    "transform_article",
+    "transform_tree",
+    "tree_as_string",
+]

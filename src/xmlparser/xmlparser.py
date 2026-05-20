@@ -1,10 +1,8 @@
 """Module providing tools for the manipulation of XML articles."""
 
 import itertools
-import os
-import pathlib
 import re
-from collections.abc import Iterator, Sequence
+from collections.abc import Iterator
 from copy import deepcopy
 from dataclasses import dataclass
 from importlib import resources
@@ -50,8 +48,8 @@ class TextDescription:
 
 
 @dataclass
-class JatsFrontMeta:
-    title: str = "Untitled"
+class ArticleMeta:
+    title: str = ""
     authors: str = ""
     journal: str = ""
     volume: str = ""
@@ -64,7 +62,7 @@ class JatsFrontMeta:
 class ParsedArticle:
     """Parsed content of a scientific article, source-format agnostic."""
 
-    meta: JatsFrontMeta | None
+    meta: ArticleMeta | None
     abstract: str | None
     body: str | None
 
@@ -181,7 +179,11 @@ def _front_text(elem: _Element, xpath: str) -> str:
     return "".join(results).strip() if results else ""
 
 
-def parse_jats_front(front: _Element) -> JatsFrontMeta:
+def _parse_year(year_str: str) -> int:
+    return int(year_str) if year_str.isdigit() else 0
+
+
+def parse_jats_front(front: _Element) -> ArticleMeta:
     title = _front_text(front, ".//*[name()='article-title']//text()")
 
     surnames = front.xpath(
@@ -212,9 +214,9 @@ def parse_jats_front(front: _Element) -> JatsFrontMeta:
     )
     if not year_str:
         year_str = _front_text(front, ".//*[name()='pub-date']/*[name()='year']/text()")
-    year = int(year_str) if year_str.isdigit() else 0
+    year = _parse_year(year_str)
 
-    return JatsFrontMeta(
+    return ArticleMeta(
         title=title,
         authors=authors,
         journal=journal,
@@ -234,6 +236,40 @@ def parse_jats_article(record: _Element) -> ParsedArticle:
         meta=parse_jats_front(fronts[0]) if fronts else None,
         abstract=tree_as_string(abstract_els[0]) if abstract_els else None,
         body=tree_as_string(body_els[0]) if body_els else None,
+    )
+
+
+def _pubmed_author_name(author: _Element) -> str:
+    last = "".join(author.xpath("LastName/text()"))
+    fore = "".join(author.xpath("ForeName/text()"))
+    return f"{last}, {fore}" if fore else last
+
+
+def parse_pubmed_article(record: _Element) -> ParsedArticle:
+    title = _front_text(record, ".//ArticleTitle//text()")
+    authors = "; ".join(
+        _pubmed_author_name(a) for a in record.xpath(".//AuthorList/Author")
+    )
+    journal = _front_text(record, ".//Journal/Title/text()")
+    pages = _front_text(record, ".//MedlinePgn/text()")
+
+    ji = record.find(".//JournalIssue")
+    volume = _front_text(ji, "Volume/text()") if ji is not None else ""
+    number = _front_text(ji, "Issue/text()") or None if ji is not None else None
+    year = _parse_year(_front_text(ji, "PubDate/Year/text()") if ji is not None else "")
+
+    return ParsedArticle(
+        meta=ArticleMeta(
+            title=title,
+            authors=authors,
+            journal=journal,
+            volume=volume,
+            number=number,
+            pages=pages,
+            year=year,
+        ),
+        abstract=_front_text(record, ".//Abstract/AbstractText//text()") or None,
+        body=None,
     )
 
 
