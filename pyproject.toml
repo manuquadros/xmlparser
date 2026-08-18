@@ -5,7 +5,7 @@ description = "D3 utilities for parsing XML files"
 readme = "README.md"
 license = "GPL-3.0-or-later"
 requires-python = ">=3.11, <4"
-dependencies = ["lxml>=5.4.0", "nltk>=3.9.1"]
+dependencies = ["lxml>=5.4.0", "nltk>=3.10.3"]
 
 [build-system]
 requires = ["pdm-backend"]
@@ -15,6 +15,4 @@ build-backend = "pdm.backend"
 addopts = ["--import-mode=importlib"]
 
 [dependency-groups]
-dev = [
-    "pytest>=9.0.3",
-]
+dev = ["pytest>=9.0.3", "pytest-profiling>=1.8.1"]
