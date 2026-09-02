@@ -228,9 +228,12 @@ def parse_jats_front(front: _Element) -> ArticleMeta:
 
 
 def parse_jats_article(record: _Element) -> ParsedArticle:
-    fronts = record.xpath("//*[name()='front'][1]")
-    abstract_els = record.xpath("//*[name()='abstract'][1]")
-    body_els = record.xpath("//*[name()='body'][1]")
+    # The XPaths must stay relative (".//"): a leading "//" is absolute over the
+    # whole document, so parsing the articles of a multi-article <pmc-articleset>
+    # in place would return the first article's content for every one of them.
+    fronts = record.xpath(".//*[name()='front'][1]")
+    abstract_els = record.xpath(".//*[name()='abstract'][1]")
+    body_els = record.xpath(".//*[name()='body'][1]")
 
     return ParsedArticle(
         meta=parse_jats_front(fronts[0]) if fronts else None,

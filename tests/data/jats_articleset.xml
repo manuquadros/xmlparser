@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pmc-articleset>
+  <article xmlns:xlink="http://www.w3.org/1999/xlink" article-type="research-article">
+    <front>
+      <journal-meta>
+        <journal-title-group>
+          <journal-title>Journal of Fermentation Science</journal-title>
+        </journal-title-group>
+      </journal-meta>
+      <article-meta>
+        <article-id pub-id-type="pmid">11111111</article-id>
+        <article-id pub-id-type="pmc">PMC1111111</article-id>
+        <title-group>
+          <article-title>Lactic acid production in <italic>Lactobacillus</italic> cultures</article-title>
+        </title-group>
+        <contrib-group>
+          <contrib contrib-type="author">
+            <name><surname>Almeida</surname><given-names>Rita</given-names></name>
+          </contrib>
+          <contrib contrib-type="author">
+            <name><surname>Okonkwo</surname><given-names>Chidi</given-names></name>
+          </contrib>
+        </contrib-group>
+        <pub-date pub-type="epub"><year>2019</year><month>4</month></pub-date>
+        <volume>12</volume>
+        <issue>3</issue>
+        <fpage>101</fpage>
+        <lpage>115</lpage>
+        <abstract>
+          <p>We measured lactic acid yields across twelve strains.</p>
+        </abstract>
+      </article-meta>
+    </front>
+    <body>
+      <sec><title>Introduction</title><p>Fermentation remains poorly characterised.</p></sec>
+    </body>
+  </article>
+  <article xmlns:xlink="http://www.w3.org/1999/xlink" article-type="research-article">
+    <front>
+      <journal-meta>
+        <journal-title-group>
+          <journal-title>Archives of Soil Microbiology</journal-title>
+        </journal-title-group>
+      </journal-meta>
+      <article-meta>
+        <article-id pub-id-type="pmid">22222222</article-id>
+        <article-id pub-id-type="pmc">PMC2222222</article-id>
+        <title-group>
+          <article-title>Nitrogen fixation by rhizosphere communities</article-title>
+        </title-group>
+        <contrib-group>
+          <contrib contrib-type="author">
+            <name><surname>Bergström</surname><given-names>Ingrid</given-names></name>
+          </contrib>
+        </contrib-group>
+        <pub-date pub-type="ppub"><year>2021</year></pub-date>
+        <volume>7</volume>
+        <fpage>44</fpage>
+        <lpage>60</lpage>
+        <abstract>
+          <p>Root-associated diazotrophs were surveyed in acidic soils.</p>
+        </abstract>
+      </article-meta>
+    </front>
+    <body>
+      <sec><title>Introduction</title><p>Diazotroph diversity varies with soil pH.</p></sec>
+    </body>
+  </article>
+</pmc-articleset>

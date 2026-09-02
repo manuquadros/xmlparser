@@ -10,6 +10,7 @@ from xmlparser.xmlparser import (
     fromstring,
     merge_children,
     parse,
+    parse_jats_article,
     parse_pubmed_article,
     promote_spans,
     reinsert_tags,
@@ -219,3 +220,43 @@ def test_parse_pubmed_article():
     assert article.body is None
     assert article.abstract is not None
     assert article.abstract.startswith("Endometriosis, characterized by")
+
+
+def test_parse_jats_article_is_scoped_to_the_given_element():
+    """Each <article> of a multi-article set must parse as itself, not as the first."""
+    tree = parse(str(DATA_DIR / "jats_articleset.xml"))
+    records = tree.xpath("//*[name()='article']")
+    assert len(records) == 2
+
+    first, second = (parse_jats_article(record) for record in records)
+
+    assert isinstance(first.meta, ArticleMeta)
+    assert isinstance(second.meta, ArticleMeta)
+
+    assert first.meta.title == "Lactic acid production in Lactobacillus cultures"
+    assert first.meta.journal == "Journal of Fermentation Science"
+    assert first.meta.authors == "Almeida, Rita; Okonkwo, Chidi"
+    assert first.meta.volume == "12"
+    assert first.meta.number == "3"
+    assert first.meta.pages == "101–115"
+    assert first.meta.year == 2019
+    assert first.abstract is not None
+    assert "lactic acid yields" in first.abstract
+    assert first.body is not None
+    assert "Fermentation remains poorly characterised." in first.body
+
+    assert second.meta.title == "Nitrogen fixation by rhizosphere communities"
+    assert second.meta.journal == "Archives of Soil Microbiology"
+    assert second.meta.authors == "Bergström, Ingrid"
+    assert second.meta.volume == "7"
+    assert second.meta.number is None
+    assert second.meta.pages == "44–60"
+    assert second.meta.year == 2021
+    assert second.abstract is not None
+    assert "Root-associated diazotrophs" in second.abstract
+    assert second.body is not None
+    assert "Diazotroph diversity varies with soil pH." in second.body
+
+    assert first.meta.title != second.meta.title
+    assert first.abstract != second.abstract
+    assert first.body != second.body
