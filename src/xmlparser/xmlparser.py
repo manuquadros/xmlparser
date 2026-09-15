@@ -208,12 +208,14 @@ def parse_jats_front(front: _Element) -> ArticleMeta:
 
     year_str = _front_text(
         front,
-        ".//*[name()='pub-date' and ("
+        "(.//*[name()='pub-date' and ("
         "@pub-type='ppub' or @pub-type='epub' or @date-type='pub'"
-        ")]/*[name()='year']/text()",
+        ")])[1]/*[name()='year']/text()",
     )
     if not year_str:
-        year_str = _front_text(front, ".//*[name()='pub-date']/*[name()='year']/text()")
+        year_str = _front_text(
+            front, "(.//*[name()='pub-date'])[1]/*[name()='year']/text()"
+        )
     year = _parse_year(year_str)
 
     return ArticleMeta(

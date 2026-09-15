@@ -260,3 +260,24 @@ def test_parse_jats_article_is_scoped_to_the_given_element():
     assert first.meta.title != second.meta.title
     assert first.abstract != second.abstract
     assert first.body != second.body
+
+
+def test_year_is_not_doubled_by_a_second_pub_date():
+    """A print and an electronic pub-date must not concatenate into one year.
+
+    `_front_text` joins every matched text node, and the year xpath used to
+    match every qualifying `pub-date`, so an article carrying both an epub
+    and a ppub date (the common JATS case) produced e.g. `20102010`.
+    """
+    article = fromstring(
+        "<article>"
+        "<front><article-meta>"
+        '<pub-date pub-type="epub"><year>2010</year></pub-date>'
+        '<pub-date pub-type="ppub"><year>2010</year></pub-date>'
+        "</article-meta></front>"
+        "</article>"
+    )
+    parsed = parse_jats_article(article)
+
+    assert isinstance(parsed.meta, ArticleMeta)
+    assert parsed.meta.year == 2010
