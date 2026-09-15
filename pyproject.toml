@@ -1,6 +1,6 @@
 [project]
 name = "xmlparser"
-version = "0.1.0"
+dynamic = ["version"]
 description = "D3 utilities for parsing XML files"
 readme = "README.md"
 license = "GPL-3.0-or-later"
@@ -14,5 +14,18 @@ build-backend = "pdm.backend"
 [tool.pytest.ini_options]
 addopts = ["--import-mode=importlib"]
 
+
+[tool.pdm.version]
+source = "scm"
+
+[tool.pdm.scripts]
+changelog = "git-cliff --output CHANGELOG.md"
+next-version = "git-cliff --bumped-version"
+release = "python scripts/release.py"
 [dependency-groups]
-dev = ["pytest>=9.0.3", "pytest-profiling>=1.8.1"]
+dev = [
+    "pytest>=9.0.3",
+    "pytest-profiling>=1.8.1",
+    "git-cliff>=2.13.1",
+]
+
